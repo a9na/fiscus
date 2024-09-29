@@ -36,7 +36,7 @@ export default function Category() {
     if (res.ok) {
       const _user = {
         ...user,
-        categories: user.categories.filter((cat) => cat._id != id),
+        categories: user.categories.filter((cat) => cat._id !== id),
       };
       dispatch(setUser({ user: _user }));
     }

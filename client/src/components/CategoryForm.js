@@ -89,7 +89,7 @@ export default function CategoryForm({ editCategory, setEditCategory }) {
     const _user = {
       ...user,
       categories: user.categories.map((cat) =>
-        cat._id == editCategory._id ? form : cat
+        cat._id === editCategory._id ? form : cat
       ),
     };
     reload(res, _user);
