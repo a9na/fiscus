@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { setUser } from "./store/auth.js";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  async function fetchUser() {   
+  const fetchUser = useCallback(async () => {
     setIsLoading(true);
     const res = await fetch(`${process.env.REACT_APP_API_URL}/user`, {
       headers: {
@@ -23,11 +23,11 @@ function App() {
       dispatch(setUser(user));
     }
     setIsLoading(false);
-  }
+  }, [dispatch, token]); // Dependencies for useCallback
 
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchUser]); // Dependency array for useEffect
 
   if (isLoading) {
     return <p>Loading...</p>;
