@@ -29,7 +29,7 @@ export default function NavBar() {
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/" className="text-white">
-              SpendSmartly!
+              Fiscus 💰
             </Link>
           </Typography>
           {user && isAuthenticated && (
