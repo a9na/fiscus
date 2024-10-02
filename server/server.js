@@ -13,11 +13,18 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 // CORS configuration
-const allowedOrigins = ['https://fiscus-app.netlify.app/']; // Replace with your actual Netlify site URL
+const allowedOrigins = ['https://fiscus-app.netlify.app']; // No trailing slash
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Allow the origin
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject the origin
+    }
+  },
   credentials: true
 }));
+
 
 app.use(bodyParser.json());
 app.use(passport.initialize());
