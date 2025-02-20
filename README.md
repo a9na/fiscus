@@ -1,6 +1,5 @@
 # 📊💰 B.S Final Project: Web application for personal finance management Fiscus 🚀🔍
 
-Plan on publishing soon..
 
 Part of a scientific paper on commercial app development and managing finances and building better financial habits
 🏗️🚧  Currently under construction
